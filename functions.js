@@ -32,7 +32,7 @@
 //         console.log("hello");
 //         console.log("bye");}
 //     x();
-
+//task-1
 function printStarPattern(rows, cols) {
     let pattern = "";
     for (let i = 0; i < rows; i++) {
@@ -45,6 +45,7 @@ function printStarPattern(rows, cols) {
   }
   printStarPattern(5, 5);
 
+  //task-2
   function printTrianglePattern(rows) {
     let pattern = "";
     for (let i = 1; i <= rows; i++) { 
@@ -55,7 +56,8 @@ function printStarPattern(rows, cols) {
     }
     console.log(pattern);
   }
-  
+
+  //task-3
   printTrianglePattern(5); 
   function printDiagonalPattern(size) {
     let pattern = "";
