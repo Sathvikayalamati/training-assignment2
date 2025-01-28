@@ -119,41 +119,87 @@
 // let h1=document.createElement("h1");
 // h1.setAttribute("id","demo");
 // h1.
-let mainEle = document.createElement("div");
-mainEle.setAttribute("id", "mainBlock");
-mainEle.style.border="2px solid red";
-mainEle.style.width="550px";
-mainEle.style.height="550px";
+// let mainEle = document.createElement("div");
+// mainEle.setAttribute("id", "mainBlock");
+// mainEle.style.border="2px solid red";
+// mainEle.style.width="550px";
+// mainEle.style.height="550px";
 
-console.log(mainEle);
+// console.log(mainEle);
 
-let topEle = document.createElement("div");
-topEle.setAttribute("class","topBlock");
-// console.log(topEle);
+// let topEle = document.createElement("div");
+// topEle.setAttribute("class","topBlock");
+// // console.log(topEle);
 
-let image = document.createElement("img");
-image.src = "https://easy-peasy.ai/cdn-cgi/image/quality=80,format=auto,width=700/https://fdczvxmwwjwpwbeeqcth.supabase.co/storage/v1/object/public/images/a8bf1a2c-259e-4e95-b2c2-bb995876ed63/a252bcd6-9a10-40be-bf99-1d850d2026e4.png";
-image.style.width="550px"
+// let image = document.createElement("img");
+// image.src = "https://easy-peasy.ai/cdn-cgi/image/quality=80,format=auto,width=700/https://fdczvxmwwjwpwbeeqcth.supabase.co/storage/v1/object/public/images/a8bf1a2c-259e-4e95-b2c2-bb995876ed63/a252bcd6-9a10-40be-bf99-1d850d2026e4.png";
+// image.style.width="550px"
 
-let bottomEle = document.createElement("div");
-bottomEle.setAttribute("class", "bottomBlock");
+// let bottomEle = document.createElement("div");
+// bottomEle.setAttribute("class", "bottomBlock");
 
 
-let h1 = document.createElement("h1");
-h1.innerText = "CAT";
-h1.style.textAlign= "center";
+// let h1 = document.createElement("h1");
+// h1.innerText = "CAT";
+// h1.style.textAlign= "center";
 
-let btn = document.createElement("button");
-btn.innerText="View more";
-btn.style.border="none";
-btn.style.padding="20px";
-btn.style.backgroundColor="dodgerblue";
-btn.style.color="white";
+// let btn = document.createElement("button");
+// btn.innerText="View more";
+// btn.style.border="none";
+// btn.style.padding="20px";
+// btn.style.backgroundColor="dodgerblue";
+// btn.style.color="white";
 
-bottomEle.appendChild(h1);
-bottomEle.appendChild(btn);
+// bottomEle.appendChild(h1);
+// bottomEle.appendChild(btn);
 
-topEle.appendChild(image);
-mainEle.appendChild(topEle);
-mainEle.appendChild(bottomEle);
-document.body.appendChild(mainEle);
+// topEle.appendChild(image);
+// mainEle.appendChild(topEle);
+// mainEle.appendChild(bottomEle);
+// document.body.appendChild(mainEle);
+// Select form and input elements
+let form = document.querySelector("form");
+let username = document.getElementById("uName");
+let password = document.getElementById("uPass"); // Make sure 'id' matches the corrected HTML
+let check=document.getElementById("check");
+let show=document.getElementById("show");
+let gender = document.getElementsByName("gender");
+
+
+// Add submit event listener to the form
+check.addEventListener("click",event=>{
+    if(event.target.checked==true){
+        password.setAttribute("type", "text");
+        show.innerText="hide password";
+    }else{
+        password.setAttribute("type", "password");
+        show.innerText="show password";
+    }
+})
+form.addEventListener("submit", (event) => {
+    event.preventDefault(); // Prevent default form submission
+
+    let un = username.value;
+    let up = password.value;
+    let gen = "";
+
+    // Loop through gender radio buttons to find the selected one
+    for (let i = 0; i < gender.length; i++) {
+        if (gender[i].checked) {
+            gen = gender[i].value;
+        }
+    }
+
+    // Create a user details object
+    let userDetails = {
+        username: un,
+        password: up,
+        gender: gen,
+    };
+
+    // Log user details to the console
+    console.log(userDetails);
+
+    // Store user details in sessionStorage
+    sessionStorage.setItem("userData", JSON.stringify(userDetails));
+});
