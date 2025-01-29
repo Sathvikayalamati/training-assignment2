@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Employee Details</h2>
+    <table id="employeeTable">
+        <thead>
+            <tr>
+                <th>Emp ID</th>
+                <th>Emp Name</th>
+                <th>Emp Company</th>
+                <th>Emp Salary</th>
+                <th>Emp City</th>
+                <th>Emp Area</th>
+            </tr>
+        </thead>
+        <tbody>
+            
+        </tbody>
+    </table>
+
+    <script>
+        
+        const employees = [
+        {id:101,name: "ravi",company:"microsoft",salary:100000,address:{city:"hyderabad", area:"gachibowli" }},
+        {id:102,name: "sita",company:"google",salary:50000,address:{city:"hyderabad", area:"Hitech city" }},
+        {id:103,name: "ravi",company:"Infosys",salary:100000,address:{city:"hyderabad", area:"kondapur" }}
+        ];
+
+        
+        function generateTable() {
+            const tableBody = document.querySelector("#employeeTable tbody");
+
+            employees.forEach(emp => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${emp.id}</td>
+                    <td>${emp.name}</td>
+                    <td>${emp.company}</td>
+                    <td>${emp.salary}</td>
+                    <td>${emp.address.city}</td>
+                    <td>${emp.address.area}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+        generateTable();
+    </script>
+
+</body>
+</html>
